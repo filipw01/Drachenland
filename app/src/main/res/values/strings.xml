@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Drachenland</string>
-
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="proceed">Vertig</string>
+    <string name="beginning">Dunkel… Dunkel überall. \nWo bin ich? Wer bin ich?</string>
+    <string name="name">Deine name</string>
+    <string name="textOne">Mein Name… ich weiß, dass ich ihn kenne, aber ich kann mich daran nicht
+        erinnern. Vielleicht %1$s ? Ja, jetzt bin ich sicher. So, wo bin ich? Ist das eine Höhle?
+        Oder ein Keller? Licht! Etwas scheint weit in Dunkelheit. Das Licht wird immer heller…
+    </string>
 </resources>
