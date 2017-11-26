@@ -29,7 +29,6 @@ class FullscreenActivity : AppCompatActivity() {
     private val mShowPart2Runnable = Runnable {
         // Delayed display of UI elements
         supportActionBar?.show()
-        fullscreen_content_controls.visibility = View.VISIBLE
     }
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
@@ -38,12 +37,6 @@ class FullscreenActivity : AppCompatActivity() {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
-        if (AUTO_HIDE) {
-            delayedHide(AUTO_HIDE_DELAY_MILLIS)
-        }
-        false
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +46,9 @@ class FullscreenActivity : AppCompatActivity() {
 
         mVisible = true
         btn.setOnClickListener{
-            var name = name.text
-            text.text= getString(R.string.textOne, name)
+            val nameVal = name.text
+            text.text= getString(R.string.textOne, nameVal)
+            name.visibility = View.GONE
         }
         // Set up the user interaction to manually show or hide the system UI.
         layoutOne.setOnClickListener { toggle() }
