@@ -2,9 +2,15 @@
     <string name="app_name">Drachenland</string>
     <string name="proceed">Vertig</string>
     <string name="beginning">Dunkel… Dunkel überall. \nWo bin ich? Wer bin ich?</string>
-    <string name="name">Deine name</string>
-    <string name="textOne">Mein Name… ich weiß, dass ich ihn kenne, aber ich kann mich daran nicht
+    <string name="name">Deine name:</string>
+    <string name="text1">Mein Name… ich weiß, dass ich ihn kenne, aber ich kann mich daran nicht
         erinnern. Vielleicht %1$s ? Ja, jetzt bin ich sicher. So, wo bin ich? Ist das eine Höhle?
         Oder ein Keller? Licht! Etwas scheint weit in Dunkelheit. Das Licht wird immer heller…
     </string>
+    <string name="text2">Das Licht blendet mich mit seiner Helligkeit. Ich mache meine Augen zu.
+        Aber es hilft nicht und ein grelles Licht fängt meine Augenlieder zu brennen an. Ich kann
+        das nicht mehr ertragen &#8230; Ich öffne die Augen. Das Licht ist nicht mehr grell. Ich sehe..
+        eine Höhle? Ich bin in einer Grotte. Dort, wo das Licht war, gibt einen Ausgang!
+        (Gott sei Dank!) Ich gehe aus.</string>
+    <string name="age">Wie alt bist du?</string>
 </resources>

@@ -3,6 +3,7 @@ package com.wyimaginowanakrotka.drachenland
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils
 import android.view.View
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
@@ -43,12 +44,34 @@ class FullscreenActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        var page = 1
         mVisible = true
-        btn.setOnClickListener{
-            val nameVal = name.text
-            text.text= getString(R.string.textOne, nameVal)
-            name.visibility = View.GONE
+        btn.setOnClickListener {
+            when (page) {
+                1 -> {
+                    val nameVal = name.text
+                    name.visibility = View.GONE
+                    age.visibility = View.VISIBLE
+                    text.text = getString(R.string.text1, nameVal)
+                }
+                2 -> {
+                    TextUtils.isDigitsOnly(age.text)
+                    age.visibility = View.GONE
+                    when {
+                        Integer.parseInt(age.text.toString()) > 60 -> {
+                            text.text = "Byłeś za stary na przygodę po kilku dniach spędzonych w jaskini" +
+                                    " bez jedzenia i picia padłeś z wycieńczenia i nigdy nie wstałeś"
+                        }
+                        Integer.parseInt(age.text.toString()) < 14 -> {
+                                text.text = "Twój młody organizm nie wytrzymał przeciążenia organizmu i po" +
+                                        "ostatniego oddechu padłeś na kamienne dno jaskini"
+                        }
+                        Integer.parseInt(age.text.toString()) in 14..60 -> text.text = getString(R.string.text2)
+                    }
+                }
+                else -> text.text = "Bug"
+            }
+            page += 1
         }
         // Set up the user interaction to manually show or hide the system UI.
         layoutOne.setOnClickListener { toggle() }
