@@ -28,7 +28,7 @@
             android:paddingBottom="20sp"
             android:paddingLeft="20sp"
             android:paddingRight="20sp"
-            android:paddingTop="20sp"
+            android:paddingTop="40sp"
             android:text="@string/beginning"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
@@ -45,7 +45,8 @@
             android:paddingTop="20sp"
             android:text="@string/name"
             android:textColor="@android:color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:selectAllOnFocus="true"/>
 
         <EditText
             android:id="@+id/age"
@@ -60,7 +61,35 @@
             android:text="@string/age"
             android:textColor="@android:color/white"
             android:textSize="14sp"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:selectAllOnFocus="true"/>
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/proceed" />
+
+            <Button
+                android:id="@+id/restart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="restart"
+                android:visibility="gone"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -68,22 +97,4 @@
          android:fitsSystemWindows. -->
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/fullscreen_content_controls"
-        style="?metaButtonBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:ignore="UselessParent">
-
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_weight="1"
-            android:text="@string/proceed" />
-
-    </LinearLayout>
 </FrameLayout>

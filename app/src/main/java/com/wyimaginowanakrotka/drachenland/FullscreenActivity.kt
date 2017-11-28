@@ -1,5 +1,6 @@
 package com.wyimaginowanakrotka.drachenland
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -46,6 +47,11 @@ class FullscreenActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         var page = 1
         mVisible = true
+        restart.setOnClickListener{
+            val intent = Intent(this, FullscreenActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
         btn.setOnClickListener {
             when (page) {
                 1 -> {
@@ -61,12 +67,20 @@ class FullscreenActivity : AppCompatActivity() {
                         Integer.parseInt(age.text.toString()) > 60 -> {
                             text.text = "Byłeś za stary na przygodę po kilku dniach spędzonych w jaskini" +
                                     " bez jedzenia i picia padłeś z wycieńczenia i nigdy nie wstałeś"
+                            btn.visibility = View.GONE
+                            restart.visibility = View.VISIBLE
                         }
                         Integer.parseInt(age.text.toString()) < 14 -> {
-                                text.text = "Twój młody organizm nie wytrzymał przeciążenia organizmu i po" +
-                                        "ostatniego oddechu padłeś na kamienne dno jaskini"
+                            text.text = "Twój młody organizm nie wytrzymał przeciążenia organizmu i po" +
+                                    "ostatniego oddechu padłeś na kamienne dno jaskini"
+                            btn.visibility = View.GONE
+                            restart.visibility = View.VISIBLE
+
                         }
-                        Integer.parseInt(age.text.toString()) in 14..60 -> text.text = getString(R.string.text2)
+                        Integer.parseInt(age.text.toString()) in 14..60 -> {
+                            text.text = getString(R.string.text2)
+                        btn.visibility = View.GONE
+                    }
                     }
                 }
                 else -> text.text = "Bug"
