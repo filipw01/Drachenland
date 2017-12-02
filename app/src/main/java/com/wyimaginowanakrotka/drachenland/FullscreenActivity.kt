@@ -63,32 +63,38 @@ class FullscreenActivity : AppCompatActivity() {
                 2 -> {
                     TextUtils.isDigitsOnly(age.text)
                     age.visibility = View.GONE
-                    when {
-                        Integer.parseInt(age.text.toString()) > 60 -> {
-                            text.text = "Byłeś za stary na przygodę po kilku dniach spędzonych w jaskini" +
-                                    " bez jedzenia i picia padłeś z wycieńczenia i nigdy nie wstałeś"
-                            btn.visibility = View.GONE
-                            restart.visibility = View.VISIBLE
-                        }
-                        Integer.parseInt(age.text.toString()) < 14 -> {
-                            text.text = "Twój młody organizm nie wytrzymał przeciążenia organizmu i po" +
-                                    "ostatniego oddechu padłeś na kamienne dno jaskini"
-                            btn.visibility = View.GONE
-                            restart.visibility = View.VISIBLE
+                    try {
+                        when {
+                            Integer.parseInt(age.text.toString()) > 60 -> {
+                                text.text = "Byłeś za stary na przygodę po kilku dniach " +
+                                        "spędzonych w jaskini bez jedzenia i picia padłeś z " +
+                                        "wycieńczenia i nigdy nie wstałeś"
+                                btn.visibility = View.GONE
+                                restart.visibility = View.VISIBLE
+                            }
+                            Integer.parseInt(age.text.toString()) < 14 -> {
+                                text.text = "Twój młody organizm nie wytrzymał przeciążenia " +
+                                        "organizmu i po ostatniego oddechu padłeś na kamienne " +
+                                        "dno jaskini"
+                                btn.visibility = View.GONE
+                                restart.visibility = View.VISIBLE
 
+                            }
+                            Integer.parseInt(age.text.toString()) in 14..60 -> {
+                                text.text = getString(R.string.text2)
+                            }
                         }
-                        Integer.parseInt(age.text.toString()) in 14..60 -> {
-                            text.text = getString(R.string.text2)
+                    }catch (e:Exception){
+                        text.text = "Zmień wartość domyślną cymbale. Jesteś dumny z tego, że " +
+                                "popsułeś naszą grę?. Teraz baw się dobrze restartując"
                         btn.visibility = View.GONE
-                    }
+                        restart.visibility = View.VISIBLE
                     }
                 }
-                else -> text.text = "Bug"
+                else -> text.text = getString(R.string.test)
             }
             page += 1
         }
-        // Set up the user interaction to manually show or hide the system UI.
-        layoutOne.setOnClickListener { toggle() }
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
