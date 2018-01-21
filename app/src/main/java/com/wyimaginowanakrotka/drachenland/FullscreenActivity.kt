@@ -7,6 +7,7 @@ import android.os.Handler
 import android.text.TextUtils
 import android.view.View
 import kotlinx.android.synthetic.main.activity_fullscreen.*
+import java.lang.Integer.parseInt
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -45,7 +46,10 @@ class FullscreenActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        var page = 1
+        var pageNum =1
+       /* if (intent.extras != null) {
+            pageNum = parseInt(intent.getStringExtra("page"))
+        }*/
         mVisible = true
         restart.setOnClickListener{
             val intent = Intent(this, FullscreenActivity::class.java)
@@ -53,26 +57,26 @@ class FullscreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btn.setOnClickListener {
-            when (page) {
+            when (pageNum) {
                 1 -> {
                     val nameVal = name.text
                     name.visibility = View.GONE
-                    age.visibility = View.VISIBLE
+                    ageInput.visibility = View.VISIBLE
                     text.text = getString(R.string.text1, nameVal)
                 }
                 2 -> {
-                    TextUtils.isDigitsOnly(age.text)
-                    age.visibility = View.GONE
+                    TextUtils.isDigitsOnly(ageInput.text)
+                    ageInput.visibility = View.GONE
                     try {
                         when {
-                            Integer.parseInt(age.text.toString()) > 60 -> {
+                            Integer.parseInt(ageInput.text.toString()) > 60 -> {
                                 text.text = "Byłeś za stary na przygodę po kilku dniach " +
                                         "spędzonych w jaskini bez jedzenia i picia padłeś z " +
                                         "wycieńczenia i nigdy nie wstałeś"
                                 btn.visibility = View.GONE
                                 restart.visibility = View.VISIBLE
                             }
-                            Integer.parseInt(age.text.toString()) < 14 -> {
+                            Integer.parseInt(ageInput.text.toString()) < 14 -> {
                                 text.text = "Twój młody organizm nie wytrzymał przeciążenia " +
                                         "organizmu i po ostatniego oddechu padłeś na kamienne " +
                                         "dno jaskini"
@@ -80,7 +84,7 @@ class FullscreenActivity : AppCompatActivity() {
                                 restart.visibility = View.VISIBLE
 
                             }
-                            Integer.parseInt(age.text.toString()) in 14..60 -> {
+                            Integer.parseInt(ageInput.text.toString()) in 14..60 -> {
                                 text.text = getString(R.string.text2)
                             }
                         }
@@ -93,7 +97,7 @@ class FullscreenActivity : AppCompatActivity() {
                 }
                 else -> text.text = getString(R.string.test)
             }
-            page += 1
+            pageNum += 1
         }
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
